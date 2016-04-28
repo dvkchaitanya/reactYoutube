@@ -1,0 +1,25 @@
+///<reference path='../../typings/main.d.ts' />
+import * as React from 'react';
+import * as YTSearch from 'youtube-api-search';
+const VideoListItem = (props) => {
+const video:YTSearch.IVideoResponse = props.video;
+const onVideoSelect= props.onVideoSelect;
+
+return ( 
+    <li onClick={()=> onVideoSelect(video)} className="list-group-item">
+
+        <div className="video-list media">
+            <div className="media-left">
+                <img className="media-object" src={video.snippet.thumbnails.default.url} />
+            </div>
+            <div className="media-body">
+                <div className="media-heading">
+					{video.snippet.title}
+                </div>
+            </div>
+        </div>
+    </li>
+);
+}
+
+export default VideoListItem;
